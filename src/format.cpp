@@ -7,6 +7,7 @@
 
 #include "taco/lower/mode_format_dense_old.h"
 #include "taco/lower/mode_format_compressed.h"
+#include "taco/lower/mode_format_diagonal.h"
 
 #include "taco/error.h"
 #include "taco/util/strings.h"
@@ -329,6 +330,7 @@ ostream& operator<<(ostream& os, const ModeFormatPack& modeFormatPack) {
 ModeFormat ModeFormat::Dense(std::make_shared<old::DenseModeFormat>());
 ModeFormat ModeFormat::Compressed(std::make_shared<CompressedModeFormat>());
 ModeFormat ModeFormat::Sparse = ModeFormat::Compressed;
+ModeFormat ModeFormat::Diagonal(std::make_shared<DiagModeFormat>());
 
 ModeFormat ModeFormat::dense = ModeFormat::Dense;
 ModeFormat ModeFormat::compressed = ModeFormat::Compressed;
@@ -337,6 +339,7 @@ ModeFormat ModeFormat::sparse = ModeFormat::Compressed;
 const ModeFormat Dense = ModeFormat::Dense;
 const ModeFormat Compressed = ModeFormat::Compressed;
 const ModeFormat Sparse = ModeFormat::Compressed;
+const ModeFormat Diagonal = ModeFormat::Diagonal;
 
 const ModeFormat dense = ModeFormat::Dense;
 const ModeFormat compressed = ModeFormat::Compressed;

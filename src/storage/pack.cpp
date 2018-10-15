@@ -97,6 +97,9 @@ static int packTensor(const vector<int>& dimensions,
       PACK_NEXT_LEVEL(cend);
       cbegin = cend;
     }
+  } else if (modeType == Diagonal) {
+    size_t cbegin = begin;
+    PACK_NEXT_LEVEL(end);
   } else {
     taco_not_supported_yet;
   }
@@ -149,6 +152,8 @@ TensorStorage pack(Datatype                             componentType,
       indices[i][0].push_back(0);
 
       maxSize = numCoordinates;
+    } else if (modeType == Diagonal) {
+      indices.push_back({});
     } else {
       taco_not_supported_yet;
     }
@@ -175,6 +180,8 @@ TensorStorage pack(Datatype                             componentType,
       Array idx = makeArray(format.getCoordinateTypeIdx(i), indices[i][1].size());
       memcpy(idx.getData(), indices[i][1].data(), indices[i][1].size() * format.getCoordinateTypeIdx(i).getNumBytes());
       modeIndices.push_back(ModeIndex({pos, idx}));
+    } else if (modeType == Diagonal) {
+      modeIndices.push_back(ModeIndex());
     } else {
       taco_not_supported_yet;
     }

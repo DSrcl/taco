@@ -43,7 +43,7 @@ struct TensorStorage::Content {
         modeTypes[i] = taco_mode_dense;
       } else if (modeType == Sparse) {
         modeTypes[i] = taco_mode_sparse;
-      } else {
+      } else if (modeType != Diagonal) {
         taco_not_supported_yet;
       }
     }
@@ -142,7 +142,7 @@ TensorStorage::operator struct taco_tensor_t*() const {
         tensorData->indices[i][1] = (uint8_t*)idx.getData();
       }
     }
-    else {
+    else if (modeType != Diagonal) {
       taco_not_supported_yet;
     }
   }

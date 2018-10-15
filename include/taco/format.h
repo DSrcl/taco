@@ -85,11 +85,13 @@ public:
   /// Aliases for predefined mode formats
   static ModeFormat dense;       /// e.g., first mode in CSR
   static ModeFormat compressed;  /// e.g., second mode in CSR
+  static ModeFormat diagonal;
 
   static ModeFormat sparse;      /// alias for compressed
   static ModeFormat Dense;       /// alias for dense
   static ModeFormat Compressed;  /// alias for compressed
   static ModeFormat Sparse;      /// alias for compressed
+  static ModeFormat Diagonal;
 
   /// Properties of a mode format
   enum Property {
@@ -169,6 +171,7 @@ std::ostream& operator<<(std::ostream&, const ModeFormatPack&);
 extern const ModeFormat Dense;
 extern const ModeFormat Compressed;
 extern const ModeFormat Sparse;
+extern const ModeFormat Diagonal;
 
 extern const ModeFormat dense;
 extern const ModeFormat compressed;

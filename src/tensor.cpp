@@ -106,6 +106,10 @@ static Format initFormat(Format format) {
       } else if (modeType == Sparse) {
         arrayTypes.push_back(Int32);
         arrayTypes.push_back(Int32);
+      } else if (modeType == Diagonal) {
+        // dummy array types as
+        // we don't need extra storage for diagonal dimension
+        arrayTypes.push_back(Int32);
       } else {
         taco_not_supported_yet;
       }
