@@ -407,6 +407,8 @@ static size_t unpackTensorData(const taco_tensor_t& tensorData,
       Array idx = Array(type<int>(), tensorData.indices[i][1], size);
       modeIndices.push_back(ModeIndex({pos, idx}));
       numVals = size;
+    } else if (modeType == Diagonal) {
+      modeIndices.push_back(ModeIndex());
     } else {
       taco_not_supported_yet;
     }

@@ -18,7 +18,7 @@ public:
                        true /*isUnique*/, true /*isBranchless*/,
                        true /*isCompact*/, false /*hasCoordValIter*/,
                        true /*hasCoordPosIter*/, false /*hasLocate*/,
-                       true /*hasInsert*/, false /*hasAppend*/),
+                       false /*hasInsert*/, true /*hasAppend*/),
         parentCoord(parent) {}
   virtual ModeFunction posIterBounds(ir::Expr parentPos,
                                      Mode mode) const override {
